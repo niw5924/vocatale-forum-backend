@@ -7,7 +7,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship, Session
 
 # 데이터베이스 URL 설정
-DATABASE_URL = "postgresql://postgres:mysecretpassword@localhost:5432/postgres"
+DATABASE_URL = "postgresql://user:mysecretpassword@localhost:5432/postgres"
 
 # SQLAlchemy 설정
 engine = create_engine(DATABASE_URL)

@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+"""
+FastAPI 서버 API 함수들
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이 모듈은 게시물과 댓글을 처리하는 API 요청 함수들을 포함하고 있습니다.
+각 함수는 비동기로 서버에 요청을 보내고 데이터를 가져오거나 수정, 삭제합니다.
 
-## Available Scripts
+1. get_posts: 모든 게시물을 최신순으로 가져옵니다.
+   - 사용법: posts = await get_posts()
+   - 실패 시 500 오류를 반환합니다.
 
-In the project directory, you can run:
+2. get_post: 특정 게시물을 ID로 가져옵니다.
+   - 사용법: post = await get_post(postId)
+   - 실패 시 404 오류("Post not found")를 반환합니다.
 
-### `npm start`
+3. add_post: 새로운 게시물을 추가합니다.
+   - 사용법: new_post = await add_post({"title": "Title", "content": "Content"})
+   - 실패 시 500 오류를 반환합니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+4. edit_post: 기존 게시물을 수정합니다.
+   - 사용법: updated_post = await edit_post(postId, {"title": "Updated Title", "content": "Updated Content"})
+   - 실패 시 404 오류("Post not found") 또는 500 오류를 반환합니다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+5. delete_post: 게시물을 삭제합니다.
+   - 사용법: result = await delete_post(postId)
+   - 성공 시 {"message": "Post deleted successfully"}를 반환합니다.
+   - 실패 시 404 오류("Post not found") 또는 500 오류를 반환합니다.
 
-### `npm test`
+6. increase_views: 특정 게시물의 조회수를 증가시킵니다.
+   - 사용법: updated_post = await increase_views(postId)
+   - 실패 시 404 오류("Post not found") 또는 500 오류를 반환합니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+7. add_comment: 게시물에 댓글을 추가합니다.
+   - 사용법: new_comment = await add_comment(postId, {"content": "Nice post!"})
+   - 실패 시 404 오류("Post not found") 또는 500 오류를 반환합니다.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+8. delete_comment: 게시물의 특정 댓글을 삭제합니다.
+   - 사용법: result = await delete_comment(postId, commentId)
+   - 성공 시 {"message": "Comment deleted successfully"}를 반환합니다.
+   - 실패 시 404 오류("Comment not found") 또는 500 오류를 반환합니다.
+"""
